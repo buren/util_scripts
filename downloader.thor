@@ -8,8 +8,7 @@ require 'thor'
 class WebPage < Thor
 
   desc 'fetch',
-        "downloads all links/images specified in options. \n\n
-        USAGE: thor webpage:fetch --url=www.example.com --types=pdf zip java --selector=.html-class --images=true --imgselector=.img-html-class\n"
+        "downloads all links/images specified in options. \n\nUSAGE: thor webpage:fetch --url=www.example.com --types=pdf zip java --selector=.html-class --images=true --imgselector=.img-html-class\n"
   method_option :url,
                 :type => :string,
                 :banner => 'example.com',
