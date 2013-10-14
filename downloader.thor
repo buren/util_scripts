@@ -97,7 +97,10 @@ class WebPage < Thor
 
     def linkify link
       uri = URI.parse(link)
-      uri.absolute? ? link : "#{@url.host}/#{link}"
+      return link if uri.absolute?
+      return "#{@url.host}/#{link}" if link[0].eql? "/"
+      relative_path_index = @url.path.rindex(/\//) or raise "Unable to parse the link: #{link}"
+      "#{@url.hostname}/#{@url.path[0..relative_path_index]}/#{link}"
     end
 
     def print_download_summary
