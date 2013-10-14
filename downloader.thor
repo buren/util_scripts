@@ -119,3 +119,4 @@ class WebPage < Thor
 end
 
 WebPage.start # Starts the program
+
