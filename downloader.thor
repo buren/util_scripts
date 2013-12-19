@@ -10,6 +10,7 @@ class WebPage < Thor
   desc 'fetch',
         "downloads all links/images specified in options. \n\nUSAGE: thor webpage:fetch --url=www.example.com --types=pdf zip java --selector=.html-class --images=true --imgselector=.img-html-class\n"
   method_option :url,
+                :required => true,
                 :type => :string,
                 :banner => 'example.com',
                 :desc => 'URL for the page you would like to download files from'
