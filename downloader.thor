@@ -4,6 +4,7 @@ require 'open-uri'
 require 'hpricot'
 require 'uri'
 require 'thor'
+require 'pry'
 
 class WebPage < Thor
 
@@ -99,8 +100,7 @@ class WebPage < Thor
       uri = URI.parse(link)
       return link if uri.absolute?
       return "#{@url.host}/#{link}" if link[0].eql? "/"
-      relative_path_index = @url.path.rindex(/\//) or raise "Unable to parse the link: #{link}"
-      "#{@url.hostname}/#{@url.path[0..relative_path_index]}/#{link}"
+      "#{@url.hostname}#{@url.path}#{link}"
     end
 
     def print_download_summary
