@@ -18,7 +18,7 @@ class WebPage < Thor
   method_option :file_types,
                 :type => :array,
                 :banner => 'pdf zip txt' ,
-                :default => ['pdf', 'zip', 'gz', 'txt', 'java', 'jar']
+                :default => ['pdf', 'zip', 'gz', 'txt']
   method_option :selector,
                 :type => :string,
                 :banner => 'selector',
