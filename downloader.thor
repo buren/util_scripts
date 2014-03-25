@@ -4,7 +4,7 @@ require 'open-uri'
 require 'hpricot'
 require 'uri'
 require 'thor'
-require 'pry'
+# require 'pry'
 
 class WebPage < Thor
 
@@ -51,7 +51,7 @@ class WebPage < Thor
     print_download_summary()
   end
 
-  # Below are commands that should be exposed to CLI
+  # Below are commands that shouldn't be exposed to CLI
   no_commands do
 
     def download_files links
@@ -100,7 +100,7 @@ class WebPage < Thor
       uri = URI.parse(link)
       return link if uri.absolute?
       return "#{@url.host}/#{link}" if link[0].eql? "/"
-      "#{@url.hostname}#{@url.path}#{link}"
+      "#{@url.hostname}#{@url.path.gsub /index\.php/, ''}#{link}" # FIXME: Ugly hack with index.php
     end
 
     def print_download_summary
